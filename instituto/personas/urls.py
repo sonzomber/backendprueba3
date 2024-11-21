@@ -15,5 +15,6 @@ urlpatterns=[
     path('producto<int:producto_id>/', views.detalle_producto, name='detalle_producto'),
     path('agregar<int:producto_id>/', views.agregar_al_carro, name='agregar_al_carro'),
     path('carro', views.ver_carro, name='ver_carro'),
+
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
