@@ -1,0 +1,56 @@
+{% extends 'personas/base.html' %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+
+
+{% block content %}
+
+<h2>Samsung S23</h2>
+<div class="container my-5">
+    <div class="row">
+        <!-- Carrusel de imágenes -->
+        <div class="col-md-9">
+            <div id="iphoneCarousel" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'imagenes/bannerS23.jpg' %}" class="d-block w-100" alt="samsungS23">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'imagenes/bannerS23.jpg' %}" class="d-block w-100" alt="samsungS23">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#iphoneCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#iphoneCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Descripción y opciones -->
+        <div class="col-md-3">
+            <h4><strong>Samsung S23</strong> el modelo perfecto para ti.</h4>
+            <div class="mt-4">
+                <button class="btn btn-outline-secondary w-100 text-start mb-2">
+                    <div class="d-flex justify-content-between">
+                        <p class="text-muted">Precio: ${{ producto.precio }}</p>
+                        <p class="text-muted">Stock disponible: {{ producto.stock }}</p>
+                    </div>
+    
+                </button>
+                <a href="{% url 'agregar_al_carro' producto.id %}" class="btn btn-primary">Agregar al Carro</a>
+            </div>
+            <div class="mt-4">
+                <p class="small text-muted">
+                    <strong>¿Necesitas ayuda para elegir un modelo?</strong><br>
+                    Conoce los distintos tamaños de pantalla y duración de batería.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

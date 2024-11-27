@@ -1,0 +1,18 @@
+{% extends 'personas/base.html' %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+
+
+{% block content %}
+
+<body class="bg-light">
+    <div class="container text-center mt-5">
+        <div class="card shadow p-4">
+            <h1 class="text-success">¡Gracias por su compra! 🎉</h1>
+            <p class="lead mt-3">Esperamos que disfrute su nuevo producto. Si tiene alguna pregunta, no dude en contactarnos.</p>
+            <a href="{% url 'index' %}" class="btn btn-primary mt-4">Volver al inicio</a>
+        </div>
+    </div>
+
+
+{% endblock %}
