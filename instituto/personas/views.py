@@ -7,6 +7,11 @@ def index(request):
     context={}
     return render(request,"personas/index.html",context)
 
+def productos(request):
+    context={}
+    return render(request,"personas/productos.html",context)
+
+
 def iphone15(request):
     producto = get_object_or_404(Producto, id=1)
     context = {'producto': producto}
@@ -47,3 +52,12 @@ def lista_productos(request):
     productos = Producto.objects.all()
     return render(request, 'personas/lista_productos.html', {'productos': productos})
 
+
+def reducir_cantidad(request, item_id):
+    item = get_object_or_404(ItemCarro, id=item_id)
+    if item.cantidad > 1:
+        item.cantidad -= 1
+        item.save()
+    else:
+        item.delete()  # Si la cantidad es 1, elimina el ítem
+    return redirect('ver_carro')
