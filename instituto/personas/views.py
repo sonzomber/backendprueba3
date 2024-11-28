@@ -14,18 +14,21 @@ def productos(request):
 
 #-------------------------------------------------------------------------------------
 def iphone15(request):
-    producto = get_object_or_404(Producto, id=1)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=1).first()  
     context = {'producto': producto}
     return render(request, 'personas/celulares/iphone15.html', context)
 
 
 def iphone16(request):
-    producto = get_object_or_404(Producto, id=2)  
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=2).first() 
     context = {'producto': producto}
     return render(request, 'personas/celulares/iphone16.html', context)
 
 def iphone16pro(request):
-    producto = get_object_or_404(Producto, id=3)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=3).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/iphone16pro.html', context)
 
@@ -34,97 +37,115 @@ def iphone16pro(request):
 #ACA
 
 def samsungS24(request):
-    producto = get_object_or_404(Producto, id=4)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=4).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/samsungS24.html', context)
 
 
 def samsungS23(request):
-    producto = get_object_or_404(Producto, id=5)  
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=5).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/samsungS23.html', context)
 
 def samsungS24FE(request):
-    producto = get_object_or_404(Producto, id=6)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=6).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/samsungS24FE.html', context)
 
 def samsungS24Ultra(request):
-    producto = get_object_or_404(Producto, id=7)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=7).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/samsungS24Ultra.html', context)
 
 
 def samsungS23FE(request):
-    producto = get_object_or_404(Producto, id=8)  
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=8).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/samsungS23FE.html', context)
 
 def POCOX6Pro(request):
-    producto = get_object_or_404(Producto, id=9)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=9).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/POCOX6Pro.html', context)
 
 def samsungA15(request):
-    producto = get_object_or_404(Producto, id=15)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=15).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/samsungA15.html', context)
 
 
 def redmiNote13Pro(request):
-    producto = get_object_or_404(Producto, id=10)  
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=10).first() 
     context = {'producto': producto}
     return render(request, 'personas/celulares/redmiNote13Pro.html', context)
 
 def edge50Pro(request):
-    producto = get_object_or_404(Producto, id=12)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=12).first()
     context = {'producto': producto}
     return render(request, 'personas//celulares/edge50Pro.html', context)
 
 def motorolaE14(request):
-    producto = get_object_or_404(Producto, id=13)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=13).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/motorolaE14.html', context)
 
 
 def galaxyA55(request):
-    producto = get_object_or_404(Producto, id=14)  
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=14).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/galaxyA55.html', context)
 
 def samsungA15Ligh(request):
-    producto = get_object_or_404(Producto, id=16)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=16).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/samsungA15Ligh.html', context)
 
 def samsungA05(request):
-    producto = get_object_or_404(Producto, id=17)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=17).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/samsungA05.html', context)
 
 
 def xiaomi14T(request):
-    producto = get_object_or_404(Producto, id=18)  
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=18).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/xiaomi14T.html', context)
 
 def iphone13(request):
-    producto = get_object_or_404(Producto, id=19)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=19).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/iphone13.html', context)
 
 def iphone13mini(request):
-    producto = get_object_or_404(Producto, id=20)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=20).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/iphone13mini.html', context)
 
 def iphone11(request):
-    producto = get_object_or_404(Producto, id=21)  
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=21).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/iphone11.html', context)
 
 def redmiNote13(request):
-    producto = get_object_or_404(Producto, id=11)
+    productos = Producto.objects.all()  
+    producto = productos.filter(id=11).first()
     context = {'producto': producto}
     return render(request, 'personas/celulares/redmiNote13.html', context)
 
@@ -134,26 +155,34 @@ def redmiNote13(request):
 
 
 def agregar_al_carro(request, producto_id):
-    producto = get_object_or_404(Producto, id=producto_id)
-    
-  
+
+    productos = Producto.objects.all()
+    producto = productos.filter(id=producto_id).first()
+
+    # Verificar si hay stock disponible
     if producto.stock > 0:
+       
         item, created = ItemCarro.objects.get_or_create(producto=producto)
-        if created or item.cantidad < producto.stock:
+        if created:  #
+            item.cantidad = 1
+        elif item.cantidad < producto.stock:  
             item.cantidad += 1
-            item.save()
-            producto.stock -= 1  # Reducir el stock
-            producto.save()
-            messages.success(request, f"Se agregó {producto.nombre} al carrito.")
         else:
             messages.warning(request, "No hay suficiente stock disponible.")
+            return redirect('ver_carro')
+        
+        # Guardar el ítem y actualizar el stock
+        item.save()
+        producto.stock -= 1
+        producto.save()
+        messages.success(request, f"Se agregó {producto.nombre} al carrito.")
     else:
         messages.error(request, "Este producto está agotado.")
     
     return redirect('ver_carro')
 
 def compra(request):
-    producto = get_object_or_404(Producto, id=11)
+    producto = Producto.objects.all() 
     context = {'producto': producto}
     return render(request, 'personas/compra.html', context)
 
@@ -172,18 +201,23 @@ def lista_productos(request):
 
 
 def reducir_cantidad(request, item_id):
-    item = get_object_or_404(ItemCarro, id=item_id)
+    
+    items = ItemCarro.objects.all()
+
+      # Buscar el ítem específico por su id
+    item = next((i for i in items if i.id == item_id), None)
+
+
     producto = item.producto
 
-    # Reducir la cantidad en el carrito
+   
     if item.cantidad > 1:
         item.cantidad -= 1
         item.save()
     else:
         item.delete()  
 
- 
     producto.stock += 1
     producto.save()
 
-    return redirect('ver_carro')  
+    return redirect('ver_carro')
