@@ -42,6 +42,12 @@ urlpatterns=[
     path('carro', views.ver_carro, name='ver_carro'),
     path('productos', views.productos, name='productos'),
     path('compra', views.compra, name='compra'),
+    path('login', views.login, name='login'),
+    path('logout', views.logout, name='logout'),
+    path('gracias', views.gracias, name='gracias'),
     path('carro/reducir/<int:item_id>/', views.reducir_cantidad, name='reducir_cantidad'),
+    path('carro/incrementar/<int:item_id>/', views.incrementar_cantidad, name='incrementar_cantidad'),
+    path('carro/eliminar/<int:item_id>/', views.eliminar_del_carro, name='eliminar_del_carro'),
+    
 
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

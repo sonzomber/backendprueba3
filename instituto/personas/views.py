@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Producto, ItemCarro
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Producto, ItemCarro, Orden, DetalleOrden
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def index(request):
     context={}
-    return render(request,"personas/index.html",context)
-
+    return render(request, 'personas/index.html', {'usuario': request.user if request.user.is_authenticated else None})
 def productos(request):
     context={}
     return render(request,"personas/productos.html",context)
@@ -181,11 +182,30 @@ def agregar_al_carro(request, producto_id):
     
     return redirect('ver_carro')
 
+@login_required
 def compra(request):
-    producto = Producto.objects.all() 
-    context = {'producto': producto}
-    return render(request, 'personas/compra.html', context)
+    
+    items_carro = ItemCarro.objects.all()
 
+    
+    if not items_carro.exists():
+        messages.error(request, "Tu carrito está vacío. Agrega productos antes de realizar la compra.")
+        return redirect('ver_carro')  
+
+  
+    total = sum(item.subtotal() for item in items_carro)
+    nueva_orden = Orden.objects.create(usuario=request.user, total=total)
+    # Crear detalles de orden para cada ítem en el carrito
+    for item in items_carro:
+        DetalleOrden.objects.create(
+            orden=nueva_orden,
+            producto=item.producto,
+            cantidad=item.cantidad,
+            precio=item.producto.precio
+        )
+    items_carro.delete()
+    messages.success(request, "¡Compra realizada con éxito!")
+    return redirect('gracias')  
 
 
 def ver_carro(request):
@@ -221,3 +241,67 @@ def reducir_cantidad(request, item_id):
     producto.save()
 
     return redirect('ver_carro')
+
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, f"¡Bienvenido, {user.username}!")
+            return redirect('index')  
+        else:
+            messages.error(request, "Usuario o contraseña incorrectos.")
+    
+    return render(request, 'personas/login.html')
+
+
+def logout(request):
+    logout(request)
+    return redirect('personas/login.html')  
+
+
+
+
+def gracias(request):
+    return render(request, 'personas/gracias.html', )
+
+
+
+@login_required
+def incrementar_cantidad(request, item_id):
+    items_carro = ItemCarro.objects.all()
+    item = items_carro.filter(id=item_id).first()
+    if item:
+       
+        if item.producto.stock > 0:
+            item.cantidad += 1
+            item.producto.stock -= 1
+            item.save()
+            item.producto.save()
+            messages.success(request, f"Se agregó una unidad de {item.producto.nombre} al carrito.")
+        else:
+            messages.warning(request, "No hay suficiente stock disponible para este producto.")
+    else:
+        messages.error(request, "El producto no existe en el carrito.")
+
+    return redirect('ver_carro')
+
+
+
+@login_required
+def eliminar_del_carro(request, item_id):
+    item = ItemCarro.objects.filter(id=item_id).first()
+    if item:
+        item.producto.stock += item.cantidad
+        item.producto.save()
+        item.delete()
+        messages.success(request, f"El producto {item.producto.nombre} fue eliminado del carrito.")
+    else:
+        messages.error(request, "El producto no existe en el carrito.")
+
+    return redirect('ver_carro')
+

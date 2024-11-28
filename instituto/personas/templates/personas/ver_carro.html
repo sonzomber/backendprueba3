@@ -19,10 +19,12 @@
                     <strong>{{ item.cantidad }} x {{ item.producto.nombre }}</strong><br>
                     <span>${{ item.subtotal }}</span><br>
                     <small>Stock disponible: {{ item.producto.stock }}</small>
+                    <a href="{% url 'reducir_cantidad' item.id %}" class="btn btn-warning btn-sm mx-1">-</a>
+                    <a href="{% url 'incrementar_cantidad' item.id %}" class="btn btn-success btn-sm mx-1">+</a>
                 </div>
             </div>
             <!-- Botón de eliminar -->
-            <a href="{% url 'reducir_cantidad' item.id %}" class="btn btn-warning btn-sm">Eliminar</a>
+            <a href="{% url 'eliminar_del_carro' item.id %}" class="btn btn-danger btn-sm mx-1">Eliminar</a>
         </li>
         {% endfor %}
     </ul>
